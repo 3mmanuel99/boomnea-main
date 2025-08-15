@@ -19,7 +19,7 @@ const pool = new Pool({
     const client = await pool.connect();
 
     try {
-        const resp = client.query("SELECT current_user")
+        const resp = await client.query("SELECT current_user")
         console.log(resp)
     } catch (error) {
         console.log(`An error occurred! ${error}`)
