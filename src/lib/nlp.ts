@@ -1,5 +1,6 @@
 import axios from "axios";
 import * as cheerio from "cheerio";
+import nlp from "wink-nlp";
 
 axios.get("https://en.wikipedia.org/wiki/Special:Random")
     .then(function(response) {
@@ -16,6 +17,9 @@ axios.get("https://en.wikipedia.org/wiki/Special:Random")
                 const regex = new RegExp("\\[\\d+\\]", "g")
                 let cleanerText = cleanText.replaceAll(regex, "")
                 console.log(cleanerText);
+
+                
+
             });
         }
 });
