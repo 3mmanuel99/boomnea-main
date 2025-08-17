@@ -5,7 +5,8 @@ import path from "path";
 // dotenv configurations
 dotenv.config({
     override: true, // Overrides any environment variables that have already been set on the machine with values from the .env file.
-    path: path.join(__dirname, "db.env") // Specifies a custom path if the file containing environment variables is located elsewhere. Can also be an array of strings, specifying multiple paths.
+    path: path.join(__dirname, "db.env"), // Specifies a custom path if the file containing environment variables is located elsewhere. Can also be an array of strings, specifying multiple paths.
+    quiet: true // i keep getting these tips when running my code, so i enabled this to remove them
 });
 
 // configuring postgres 
