@@ -103,6 +103,7 @@ declare module '$env/static/private' {
 	export const GIO_LAUNCHED_DESKTOP_FILE_PID: string;
 	export const npm_node_execpath: string;
 	export const GIO_LAUNCHED_DESKTOP_FILE: string;
+	export const OLDPWD: string;
 	export const TERM_PROGRAM: string;
 }
 
@@ -212,6 +213,7 @@ declare module '$env/dynamic/private' {
 		GIO_LAUNCHED_DESKTOP_FILE_PID: string;
 		npm_node_execpath: string;
 		GIO_LAUNCHED_DESKTOP_FILE: string;
+		OLDPWD: string;
 		TERM_PROGRAM: string;
 		[key: `PUBLIC_${string}`]: undefined;
 		[key: `${string}`]: string | undefined;

@@ -24,6 +24,7 @@
 	},
 	"dependencies": {
 		"axios": "^1.10.0",
+		"boomnea": ".",
 		"cheerio": "^1.1.0",
 		"dotenv": "^17.2.1",
 		"pg": "^8.16.3",
