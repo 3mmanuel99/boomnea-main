@@ -21,10 +21,7 @@ const pool: Pool = new Pool({
 function idGenerator()
 {
     // type annotations are used in typescript, which facilitates type checking by the compiler
-    const captialLetters: string[] = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-    const smallLetters: string[] = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-    const numbers: string[] = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
-    const combination = captialLetters.concat(smallLetters, numbers);
+    const combination: string = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
  
     var id: string = ""; // this variable will contain the id
     for (let i = 0; i < 10; i++)
@@ -34,7 +31,7 @@ function idGenerator()
     return id;
 }
 
-// console.log(idGenerator());
+console.log(idGenerator());
 
 /*
 (async () => {
