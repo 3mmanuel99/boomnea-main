@@ -31,7 +31,7 @@ function idGenerator()
     return id;
 }
 
-console.log(idGenerator());
+// console.log(idGenerator());
 
 /*
 (async () => {
