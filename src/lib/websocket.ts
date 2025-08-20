@@ -1,13 +1,3 @@
 import WebSocket from 'ws';
 
-const ws = new WebSocket('ws://echo.websocket.org');
-
-ws.on('error', console.error);
-
-ws.on('open', function open() {
-  ws.send('something');
-});
-
-ws.on('message', function message(data) {
-  console.log('received: %s', data);
-});
+// const server = new WebSocket();
