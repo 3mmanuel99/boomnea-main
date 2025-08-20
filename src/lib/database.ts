@@ -18,13 +18,27 @@ const pool: Pool = new Pool({
     password: process.env.PASSWORD // password used for the database
 });
 
+/* params text and values will be used when doing db ops
+the text is the operation itself e.g SELECT FROM..., the
+params are the values that are passed into said db op.
+it is worth mentioning that doing operations like this
+should NOT be prone to SQL injection
+*/
 export async function queries(text: string, values?: any[]) {
+    /* asynchronous operations when dealing with databases
+    is crucial as they avoid blocking a thread while a query
+    is being executed, in essence, a process that runs inde-
+    pendently from other processes
+    */
     const client = await pool.connect();
     try {
         await client.query(text, values);
     } catch (error) {
-        console.log(`An error occurred! ${error}`)
+        console.log(`An error occurred! ${error}`) 
     } finally {
+        /* the finally statement defines a block to run regardless of execution,
+        so this will run NO MATTER WHAT.
+        */
         client.release();
     }
 }
