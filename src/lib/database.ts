@@ -18,31 +18,13 @@ const pool: Pool = new Pool({
     password: process.env.PASSWORD // password used for the database
 });
 
-function idGenerator()
-{
-    // type annotations are used in typescript, which facilitates type checking by the compiler
-    const combination: string = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
-
-    // 62 possible values, and a length of ten, 62¹⁰ permutations (a really large number)
-    var id: string = ""; // this variable will contain the id
-    for (let i = 0; i < 10; i++)
-    {
-        id += "".concat(combination[Math.floor(Math.random() * combination.length)]); // chooses a random number from 0 to 61 which determines the position in the array
-    }
-    return id;
-}
-
-
-/*
-(async () => {
+export async function queries(text: string, values?: any[]) {
     const client = await pool.connect();
     try {
-        const {rows} = await client.query('SELECT * FROM "Users"'); 
-        console.log(rows);
+        await client.query(text, values);
     } catch (error) {
         console.log(`An error occurred! ${error}`)
     } finally {
         client.release();
     }
-})();
-*/
+}
