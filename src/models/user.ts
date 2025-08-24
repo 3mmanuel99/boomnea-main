@@ -1,4 +1,4 @@
-import { queries } from "$lib/database";
+import { queries } from "../database";
 
 export interface User {
     userid: string,
