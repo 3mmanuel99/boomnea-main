@@ -32,13 +32,21 @@ export async function queries(text: string, values?: any[]) {
     */
     const client = await pool.connect();
     try {
+        // the try block is we are trying to execute
         await client.query(text, values);
-    } catch (error) {
+    } catch (error) { 
+        // error handling: we are 'catching' exceptions generated within the try statement
         console.log(`An error occurred! ${error}`) 
     } finally {
         /* the finally statement defines a block to run regardless of execution,
         so this will run NO MATTER WHAT.
         */
-        client.release();
+        client.release(); 
+        /* we release the client once we are done with it, 
+        otherwise, the app will quickly exhaust idle, available
+        clients in the pool and all further calls to pool.connect 
+        will timeout with an error or hang indefinitely if we have 
+        connectionTimeoutMillis configured to 0.
+        */
     }
 }
