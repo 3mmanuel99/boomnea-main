@@ -10,7 +10,7 @@ dotenv.config({
 });
 
 // postgres configuration
-const pool: Pool = new Pool({
+export const pool: Pool = new Pool({
     host: process.env.HOST, 
     port: parseInt(process.env.PORT || ""), // by default, env vars are strings, and since the port is an integer, it needs to be converted to such
     database: process.env.DATABASE, // database we are using
@@ -23,6 +23,10 @@ the text is the operation itself e.g SELECT FROM..., the
 params are the values that are passed into said db op.
 it is worth mentioning that doing operations like this
 should NOT be prone to SQL injection
+
+exporting this function means that we can use it anywhere
+else within this codebase, which is crucial when we want
+to do any sort of database operation
 */
 export async function queries(text: string, values?: any[]) {
     /* asynchronous operations when dealing with databases

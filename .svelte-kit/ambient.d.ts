@@ -33,9 +33,10 @@ declare module '$env/static/private' {
 	export const XDG_MENU_PREFIX: string;
 	export const TERM_PROGRAM_VERSION: string;
 	export const JOBS: string;
-	export const HISTSIZE: string;
 	export const HOSTNAME: string;
+	export const HISTSIZE: string;
 	export const NODE: string;
+	export const DOTNET_ROOT: string;
 	export const SSH_AUTH_SOCK: string;
 	export const MEMORY_PRESSURE_WRITE: string;
 	export const npm_config_local_prefix: string;
@@ -46,8 +47,8 @@ declare module '$env/static/private' {
 	export const EDITOR: string;
 	export const BUN_INSPECT_CONNECT_TO: string;
 	export const PWD: string;
-	export const LOGNAME: string;
 	export const XDG_SESSION_DESKTOP: string;
+	export const LOGNAME: string;
 	export const XDG_SESSION_TYPE: string;
 	export const BUN_WHICH_IGNORE_CWD: string;
 	export const SYSTEMD_EXEC_PID: string;
@@ -69,6 +70,7 @@ declare module '$env/static/private' {
 	export const INVOCATION_ID: string;
 	export const MANAGERPID: string;
 	export const INIT_CWD: string;
+	export const DOTNET_BUNDLE_EXTRACT_BASE_DIR: string;
 	export const CHROME_DESKTOP: string;
 	export const STEAM_FRAME_FORCE_CLOSE: string;
 	export const GJS_DEBUG_OUTPUT: string;
@@ -103,7 +105,6 @@ declare module '$env/static/private' {
 	export const GIO_LAUNCHED_DESKTOP_FILE_PID: string;
 	export const npm_node_execpath: string;
 	export const GIO_LAUNCHED_DESKTOP_FILE: string;
-	export const OLDPWD: string;
 	export const TERM_PROGRAM: string;
 }
 
@@ -143,9 +144,10 @@ declare module '$env/dynamic/private' {
 		XDG_MENU_PREFIX: string;
 		TERM_PROGRAM_VERSION: string;
 		JOBS: string;
-		HISTSIZE: string;
 		HOSTNAME: string;
+		HISTSIZE: string;
 		NODE: string;
+		DOTNET_ROOT: string;
 		SSH_AUTH_SOCK: string;
 		MEMORY_PRESSURE_WRITE: string;
 		npm_config_local_prefix: string;
@@ -156,8 +158,8 @@ declare module '$env/dynamic/private' {
 		EDITOR: string;
 		BUN_INSPECT_CONNECT_TO: string;
 		PWD: string;
-		LOGNAME: string;
 		XDG_SESSION_DESKTOP: string;
+		LOGNAME: string;
 		XDG_SESSION_TYPE: string;
 		BUN_WHICH_IGNORE_CWD: string;
 		SYSTEMD_EXEC_PID: string;
@@ -179,6 +181,7 @@ declare module '$env/dynamic/private' {
 		INVOCATION_ID: string;
 		MANAGERPID: string;
 		INIT_CWD: string;
+		DOTNET_BUNDLE_EXTRACT_BASE_DIR: string;
 		CHROME_DESKTOP: string;
 		STEAM_FRAME_FORCE_CLOSE: string;
 		GJS_DEBUG_OUTPUT: string;
@@ -213,7 +216,6 @@ declare module '$env/dynamic/private' {
 		GIO_LAUNCHED_DESKTOP_FILE_PID: string;
 		npm_node_execpath: string;
 		GIO_LAUNCHED_DESKTOP_FILE: string;
-		OLDPWD: string;
 		TERM_PROGRAM: string;
 		[key: `PUBLIC_${string}`]: undefined;
 		[key: `${string}`]: string | undefined;

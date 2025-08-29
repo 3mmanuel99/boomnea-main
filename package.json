@@ -29,6 +29,7 @@
 		"dotenv": "^17.2.1",
 		"pg": "^8.16.3",
 		"websocket-ts": "^2.2.1",
+		"wink-eng-lite-web-model": "^1.8.1",
 		"wink-nlp": "^2.4.0",
 		"ws": "^8.18.3"
 	}
