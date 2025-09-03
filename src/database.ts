@@ -1,6 +1,6 @@
-import { Pool, Client } from "pg";
-import dotenv from "dotenv";
-import path from "path";
+import { Pool, Client } from "pg"; // library package to interact with the postgresql database
+import dotenv from "dotenv"; // library to load environmental variables from .env files
+import path from "path"; // provides utilities for working with file and directory paths
 
 // dotenv configuration
 dotenv.config({
