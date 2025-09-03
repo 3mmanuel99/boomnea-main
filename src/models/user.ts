@@ -17,7 +17,7 @@ export interface User {
 
 // fetches all the registered users
 // Promise represents the completion of an asynchronous function
-async function getUsers(): Promise<User[] | void> {
+async function getUsers(): Promise<void> {
     /* queries is the function in database.ts
         where we execute SQL statements. we are able
         to use that function in this file because it
