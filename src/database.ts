@@ -50,7 +50,9 @@ export async function queries(text: string, values?: any[]) {
         otherwise, the app will quickly exhaust idle, available
         clients in the pool and all further calls to pool.connect 
         will timeout with an error or hang indefinitely if we have 
-        connectionTimeoutMillis configured to 0.
+        connectionTimeoutMillis configured to 0. this is the number
+        of miliseconds a client must sit idle in the pool to not be
+        checked out before it is disconnected from backend and discarded
         */
     }
 }
