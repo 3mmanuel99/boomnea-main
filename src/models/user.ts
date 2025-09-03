@@ -1,4 +1,4 @@
-import { queries } from "../database";
+import { queries } from "../database"; // queries function in database.ts
 
 /* export is a declaration
 that allows values to be 'exported'.
