@@ -1,6 +1,7 @@
-import { Pool, Client } from "pg"; // library package to interact with the postgresql database
-import dotenv from "dotenv"; // library to load environmental variables from .env files
-import path from "path"; // provides utilities for working with file and directory paths
+import { Pool } from "pg";
+import dotenv from "dotenv";
+import process from "node:process";
+import path from "path";
 
 // dotenv configuration
 dotenv.config({

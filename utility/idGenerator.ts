@@ -4,6 +4,7 @@ export function idGenerator(): string
     const combination: string = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
 
     // 62 possible values, and with a length of ten, 62¹⁰ permutations (a really large number)
+    // deno-lint-ignore no-var
     var id: string = ""; // this variable will contain the id
     // since the length of the id is 10, we will use a count-controlled loop  
     for (let i = 0; i < 10; i++)
