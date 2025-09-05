@@ -1,3 +1,4 @@
+// deno-lint-ignore-file no-var
 export function gamecode(): string {
     // type annotations are used in typescript, which facilitates type checking by the compiler
     const combination: string = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890";
