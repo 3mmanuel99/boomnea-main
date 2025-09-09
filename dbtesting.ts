@@ -7,7 +7,6 @@ import { idGenerator } from "./utility/idGenerator.ts";
 // dotenv configuration
 dotenv.config({
     override: true, // Overrides any environment variables that have already been set on the machine with values from the .env file.
-    path: path.join(__dirname, "db.env"), // Specifies a custom path if the file containing environment variables is located elsewhere. Can also be an array of strings, specifying multiple paths.
     quiet: true // i keep getting these tips when running my code, so i enabled this to remove them
 });
 
@@ -34,8 +33,10 @@ to do any sort of database operation
 const client = await pool.connect();
 try {
     // the try block is we are trying to execute
-        await client.query('INSERT INTO "User" VALUES ($1, $2, $3, $4)', [idGenerator, "emmanuelc", "password", new Date().getDate()]);
-} catch (error) { 
+    const result = await client.query('SELECT Question, Answers FROM "UGQuestion" ORDER BY RANDOM() LIMIT 1');
+    console.log(result)
+} 
+catch (error) { 
     // error handling: we are 'catching' exceptions generated within the try statement
     console.log(`An error occurred! ${error}`) 
 } finally {

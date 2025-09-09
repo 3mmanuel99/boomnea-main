@@ -14,19 +14,19 @@ export interface User {
     password?: string, // a password for registered accounts. this is optional as temp account won't need this
 }
 
-// deno-lint-ignore no-explicit-any
-export async function createUser({username, password}: User): Promise<any> {
-    await queries("INSERT INTO User VALUES ($1, $2, $3, $4)", [idGenerator(), username, password, new Date()]);
+
+export async function createUser({username, password}: User): Promise<string> {
+    await queries('INSERT INTO "User" VALUES ($1, $2, $3, $4)', [idGenerator(), username, password, new Date()]);
     return "User created successfully.";
 }
 
 // fetches only one user in specific
-// deno-lint-ignore no-explicit-any
+
 export async function getUser({username}: User): Promise<any>
 {
     // avoiding issues like SQL injection by not hardcoding values into SQL statements
     // deno-lint-ignore no-explicit-any
-    const result: any = await queries("SELECT * FROM Users WHERE Username = $1", [username]);
+    const result: any = await queries('SELECT * FROM "Users" WHERE Username = $1', [username]);
     if (result["rows"][0].length == 0) {
         return "No results found."; // a row length of 0 means that it's not in the database.
     } else {
