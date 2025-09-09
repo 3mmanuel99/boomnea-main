@@ -1,8 +1,6 @@
 import { Pool } from "pg";
 import dotenv from "dotenv";
-import path from "node:path";
 import process from "node:process";
-import { idGenerator } from "./utility/idGenerator.ts";
 
 // dotenv configuration
 dotenv.config({
@@ -33,8 +31,30 @@ to do any sort of database operation
 const client = await pool.connect();
 try {
     // the try block is we are trying to execute
-    const result = await client.query('SELECT Question, Answers FROM "UGQuestion" ORDER BY RANDOM() LIMIT 1');
-    console.log(result)
+    const result = await client.query('SELECT "Question", "Answers" FROM "UGQuestion" ORDER BY RANDOM() LIMIT 1');
+    const question = result["rows"][0]["Question"];
+    const answers = result["rows"][0]["Answers"]
+
+
+    console.log(question)
+    let correctAnswer;
+    var i = 1;
+    for (const key in answers) {
+        console.log(`${i}. ${key}`)
+        if (answers[key] == true) {
+            correctAnswer = key;
+        }
+        i++;
+    }
+    const qnInput = prompt("");
+
+
+    if (answers[qnInput?.toLowerCase()]) {
+        console.log("Yes! That is the correct answer!");
+    }
+    else {
+        console.log(`No...The answer was ${correctAnswer}.`);
+    }
 } 
 catch (error) { 
     // error handling: we are 'catching' exceptions generated within the try statement

@@ -1,66 +1,37 @@
-body
-{
-    margin: 0;
-    padding: 0;
-}
-
 @font-face {
     font-family: "Ubuntu";
     src: url(Ubuntu-Regular.ttf);
 }
 
-.top-rectangle {
-    width: 1920px;
-    height: 50px;
-    filter: drop-shadow(-0.244px -13.998px 6.5px rgba(0,0,0,0.28));
-    background-color: #FFFFFF;
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     font-family: Ubuntu;
-    font-weight: bold;
-    font-size: x-large;
-    color: black;
 }
 
-.username {
-
-    text-align: center;
+body {
+    width: 100%;
+    min-width: 100vh;
+    padding: 0 10px;
+    display: flex;
+    background: #480087;
+    justify-content: center;
+    align-items: center;
 }
 
-.login-button {
-    width: 120px;
-    height: 38px;
-    border-radius: 8px;
-    background-color: #004e9d;
-    position: relative;
-    top: 3px;
-    left: 8px;
-    top: 6px;
-    font-family: Ubuntu;
-    font-weight: bold;
-    font-size: x-large;
-    color: #FFFFFF;
-    text-align: center;
-    
+.login {
+    width: 100%;
+    max-width: 435px;
+    background: #FFFF;
+    border-radius: 6px;
+    padding: 41px 30px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
-
-.signup-button {
-    width: 120px;
-    height: 38px;
-    border-radius: 8px;
-    background-color: #004e9d;
-    position: relative;
-    top: 3px;
-    left: 8px;
-    top: 6px;
-    font-family: Ubuntu;
-    font-weight: bold;
-    font-size: x-large;
-    color: #FFFFFF;
-    text-align: center;
-    
-}
-
-.bottom-rectangle {
-    width: 1920px;
-    height: 1080px;
-    background-color: #004e9d;
+/* Username and Password boxes*/
+.form usernamebox label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 5px;
 }
