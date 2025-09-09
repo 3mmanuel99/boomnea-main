@@ -4,7 +4,8 @@
     "npm:@types/node@*": "24.2.0",
     "npm:@types/node@^24.3.1": "24.3.1",
     "npm:dotenv@^17.2.2": "17.2.2",
-    "npm:pg@^8.16.3": "8.16.3"
+    "npm:pg@^8.16.3": "8.16.3",
+    "npm:ws@^8.18.3": "8.18.3"
   },
   "npm": {
     "@types/node@24.2.0": {
@@ -90,6 +91,9 @@
     "undici-types@7.10.0": {
       "integrity": "sha512-t5Fy/nfn+14LuOc2KNYg75vZqClpAiqscVvMygNnlsHBFpSXdJaYtXMcdNLpl/Qvc3P2cB3s6lOV51nqsFq4ag=="
     },
+    "ws@8.18.3": {
+      "integrity": "sha512-PEIGCY5tSlUt50cqyMXfCzX+oOPqN0vuGqWzbcJ2xvnkzkq46oOpz7dQaTDBdfICb4N14+GARUDw2XV2N4tvzg=="
+    },
     "xtend@4.0.2": {
       "integrity": "sha512-LKYU1iAXJXUgAXn9URjiu+MWhyUXHsvfp7mcuYm9dSUKK0/CjtrUwFAxD82/mCWbtLsGjFIad0wIsod4zrTAEQ=="
     }
@@ -98,7 +102,8 @@
     "dependencies": [
       "npm:@types/node@^24.3.1",
       "npm:dotenv@^17.2.2",
-      "npm:pg@^8.16.3"
+      "npm:pg@^8.16.3",
+      "npm:ws@^8.18.3"
     ]
   }
 }

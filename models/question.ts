@@ -1,27 +1,26 @@
 import { queries } from "../database.ts";
-import { idGenerator } from "../utility/idGenerator.ts";
+import { questionIdGenerator } from "../utility/idGeneration.ts";
 
-interface Answers {
-    text: string[],
-    isCorrect: boolean[]
-}
+
 interface Question {
     userID: string,
     question: string
     phaseNum: number,
-    answers: Answers
+    options: string[]
 }
 
-export async function createQuestion({userID, phaseNum, answers}: Question): Promise<string> {
+export async function createQuestion({question, userID, phaseNum, options}: Question): Promise<string> {
     switch (phaseNum)
     {
         case 1:
             
         case 2:
+
         case 3:
+            
         case 4:
     }
-    await queries('INSERT INTO "UGQuestion" VALUES($1, $2, $3, $4, $5)', [idGenerator(), userID, phaseNum, answers, new Date()]);
+    await queries('INSERT INTO "UGQuestion" VALUES($1, $2, $3, $4, $5)', [questionIdGenerator(), userID, phaseNum, options, new Date()]);
     return "Question created successfully.";
 }
 

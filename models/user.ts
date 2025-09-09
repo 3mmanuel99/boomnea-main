@@ -1,5 +1,5 @@
 import { queries } from "../database.ts";
-import {idGenerator} from "../utility/idGenerator.ts";
+import {userIdGeneration} from "../utility/idGeneration.ts";
 
 
 /* export is a declaration
@@ -15,13 +15,13 @@ export interface User {
 }
 
 
+// creates a user account
 export async function createUser({username, password}: User): Promise<string> {
-    await queries('INSERT INTO "User" VALUES ($1, $2, $3, $4)', [idGenerator(), username, password, new Date()]);
+    await queries('INSERT INTO "User" VALUES ($1, $2, $3, $4)', [userIdGeneration(), username, password, new Date()]);
     return "User created successfully.";
 }
 
 // fetches only one user in specific
-
 export async function getUser({username}: User): Promise<any>
 {
     // avoiding issues like SQL injection by not hardcoding values into SQL statements
@@ -37,4 +37,10 @@ export async function getUser({username}: User): Promise<any>
             "createdAt": result.rows[0].UserCreatedAt,
         }
     }
+}
+
+// deletes a user
+export async function deleteUser({username, password}: User): Promise<string> {
+    await queries('DELETE FROM "User" WHERE Username = $1 AND Password = $2 AND Password IS NOT NULL', [username, password]);
+    return "User deleted successfully.";
 }
