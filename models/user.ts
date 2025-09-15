@@ -17,7 +17,9 @@ export interface User {
 
 // creates a user account
 export async function createUser({username, password}: User): Promise<string> {
-    await queries('INSERT INTO "User" VALUES ($1, $2, $3, $4)', [userIdGeneration(), username, password, new Date()]);
+    // todo: use hashing algorithm for passwords so they can be stored safely
+    // ...
+    await queries('INSERT INTO "User" (UserID, Username, Password, CreatedAt) VALUES ($1, $2, $3, $4)', [userIdGeneration(), username, password, Date.now()]);
     return "User created successfully.";
 }
 
@@ -26,7 +28,7 @@ export async function getUser({username}: User): Promise<any>
 {
     // avoiding issues like SQL injection by not hardcoding values into SQL statements
     // deno-lint-ignore no-explicit-any
-    const result: any = await queries('SELECT * FROM "Users" WHERE Username = $1', [username]);
+    const result: any = await queries('SELECT * FROM "User" WHERE Username = $1', [username]);
     if (result["rows"][0].length == 0) {
         return "No results found."; // a row length of 0 means that it's not in the database.
     } else {
@@ -39,7 +41,7 @@ export async function getUser({username}: User): Promise<any>
     }
 }
 
-// deletes a user
+// deletes a REGISTERED user
 export async function deleteUser({username, password}: User): Promise<string> {
     await queries('DELETE FROM "User" WHERE Username = $1 AND Password = $2 AND Password IS NOT NULL', [username, password]);
     return "User deleted successfully.";

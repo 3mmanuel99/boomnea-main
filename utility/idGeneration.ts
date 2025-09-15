@@ -50,7 +50,7 @@ export function gamecodeGeneration(): string {
     let gamecode: string = "BM-";
 
     // instead of looping 10 times like we are doing for other id generators, we will be looping only 5 for the convenience of the user(s)
-    for (let i = 0; i < 5; i++)
+    for (let i = 0; i < 10; i++)
     {
         gamecode += "".concat(combination[Math.floor(Math.random() * combination.length)])
     }
