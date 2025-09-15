@@ -1,4 +1,4 @@
-import { queries } from "../database";
+// import { queries } from "../database";
 
 async function sleep(milliseconds: number): Promise<void> 
 {
@@ -15,7 +15,7 @@ async function sleep(milliseconds: number): Promise<void>
 } 
 
 export async function intermissionTime() {
-    var intermissionTime = 15;
+    let intermissionTime = 15;
 
     while (intermissionTime > 0)
     {
