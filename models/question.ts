@@ -1,24 +1,24 @@
 import { queries } from "../database.ts";
 import { questionIdGenerator } from "../utility/idGeneration.ts";
 
+const phaseNum = 1 | 2 | 3 | 4;
+
+interface Options
+{
+    optionName: string,
+    isCorrect: boolean
+}
 
 interface Question {
     userID: string,
     question: string
-    phaseNum: number,
     options: string[]
 }
 
-export async function createQuestion({question, userID, phaseNum, options}: Question): Promise<string> {
-    switch (phaseNum)
+export async function createQuestion({userID, question, options}: Question, phaseNumber: number, ): Promise<string> {
+    if (phaseNumber != phaseNum)
     {
-        case 1:
-            
-        case 2:
-
-        case 3:
-            
-        case 4:
+        throw new Error("Invalid phase number!");
     }
     await queries('INSERT INTO "UGQuestion" VALUES($1, $2, $3, $4, $5)', [questionIdGenerator(), userID, phaseNum, options, new Date()]);
     return "Question created successfully.";

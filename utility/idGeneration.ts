@@ -6,7 +6,6 @@ BM: gamecodes
 this is to discern each ID from another
 */
 
-
 // for questions
 export function questionIdGenerator(): string
 {
@@ -30,6 +29,7 @@ export function questionIdGenerator(): string
     }
     return id; // returning the id that has been generated
 }
+console.log(questionIdGenerator())
 
 // for users
 export function userIdGeneration(): string {
