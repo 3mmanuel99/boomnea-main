@@ -1,7 +1,6 @@
 import { Pool } from "pg";
 import dotenv from "dotenv";
 import process from "node:process";
-import path from "path";
 
 // dotenv configuration
 dotenv.config({
