@@ -9,6 +9,7 @@
     "npm:argon@*": "2.0.21_argon-logger@0.1.3_silkrouter@3.6.0",
     "npm:dotenv@^17.2.2": "17.2.2",
     "npm:pg@^8.16.3": "8.16.3",
+    "npm:sv@*": "0.9.5",
     "npm:ws@^8.18.3": "8.18.3"
   },
   "npm": {
@@ -185,6 +186,10 @@
     },
     "split2@4.2.0": {
       "integrity": "sha512-UcjcJOWknrNkF6PLX83qcHM6KHgVKNkV62Y8a5uYDVv9ydGQVwAHMKqHdJje1VTWpljG0WYpCDhrCdAOYH4TWg=="
+    },
+    "sv@0.9.5": {
+      "integrity": "sha512-Tz07IxEOhOzTTnk35f/WEXKe/aYyO8EwNDNgwALqrj3V1LaQBRYZxA3GXNXFVTYfiZGV8RHAZFjd9NQ/r7jj7g==",
+      "bin": true
     },
     "undici-types@7.10.0": {
       "integrity": "sha512-t5Fy/nfn+14LuOc2KNYg75vZqClpAiqscVvMygNnlsHBFpSXdJaYtXMcdNLpl/Qvc3P2cB3s6lOV51nqsFq4ag=="
