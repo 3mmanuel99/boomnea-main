@@ -1,4 +1,4 @@
-import { queries } from "../database.ts";
+import { queries } from "../database/database.ts";
 import { questionIdGenerator } from "../utility/idGeneration.ts";
 
 const phaseNum = 1 | 2 | 3 | 4;

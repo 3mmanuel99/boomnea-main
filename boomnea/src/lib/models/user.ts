@@ -1,4 +1,4 @@
-import { queries } from "../database.ts";
+import { queries } from "../database/database.ts";
 import {userIdGeneration} from "../utility/idGeneration.ts";
 
 

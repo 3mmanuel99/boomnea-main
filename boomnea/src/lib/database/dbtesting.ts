@@ -9,7 +9,7 @@ dotenv.config({
 });
 
 // postgres configuration
-export const pool: Pool = new Pool({
+export const pool = new Pool({
     host: process.env.HOST, 
     port: parseInt(process.env.PORT || ""), // by default, env vars are strings, and since the port is an integer, it needs to be converted to such
     database: process.env.DATABASE, // database we are using

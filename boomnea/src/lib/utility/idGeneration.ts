@@ -29,7 +29,6 @@ export function questionIdGenerator(): string
     }
     return id; // returning the id that has been generated
 }
-console.log(questionIdGenerator())
 
 // for users
 export function userIdGeneration(): string {

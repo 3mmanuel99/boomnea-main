@@ -4,12 +4,13 @@ import process from "node:process";
 
 // dotenv configuration
 dotenv.config({
+    path: "../database/.env",
     override: true, // Overrides any environment variables that have already been set on the machine with values from the .env file.
     quiet: true // i keep getting these tips when running my code, so i enabled this to remove them
 });
 
 // postgres configuration
-export const pool: Pool = new Pool({
+export const pool = new Pool({
     host: process.env.HOST, 
     port: parseInt(process.env.PORT || ""), // by default, env vars are strings, and since the port is an integer, it needs to be converted to such
     database: process.env.DATABASE, // database we are using
