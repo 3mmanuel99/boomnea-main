@@ -24,10 +24,14 @@ export async function createQuestion({userID, question, options}: Question, phas
     return "Question created successfully.";
 }
 
+
 export async function getQuestion(): Promise<any> {
-    const result: any = await queries('SELECT QuestionName, Options FROM "UGQuestion" ORDER BY RANDOM() LIMIT 1');
-    return {
-        "question": result.rows[0].QuestionName,
-        "options": result.rows[0].Options
-    }
+    const result: any = await queries('SELECT "QuestionName", "PhaseNum", "CreatedBy", "Options" FROM "Questions" TABLESAMPLE SYSTEM (1) LIMIT 1')
+    const list = {
+        question: result[0]["rows"]["QuestionName"],
+        phaseNumber: result[0]["rows"]["PhaseNum"],
+        createdBy: result[0]["rows"]["CreatedBy"],
+        options: result[0]["rows"]["Options"]
+    };
+    return list;
 }

@@ -14,12 +14,12 @@ app.get("/api/getQuestions", async (_req: any, res: any ) => {
     try {
         const result: any = await queries('SELECT "QuestionName", "PhaseNum", "CreatedBy", "Options" FROM "Questions" TABLESAMPLE SYSTEM (1) LIMIT 1')
         const list = {
-            "question": result[0]["rows"]["QuestionName"],
-            "phaseNumber": result[0]["rows"]["PhaseNum"],
-            "createdBy": result[0]["rows"]["CreatedBy"],
-            "options": result[0]["rows"]["Options"]
+            question: result[0]["rows"]["QuestionName"],
+            phaseNumber: result[0]["rows"]["PhaseNum"],
+            createdBy: result[0]["rows"]["CreatedBy"],
+            options: result[0]["rows"]["Options"]
         };
-        await res.send(JSON.stringify(list))
+        await res.send(list)
     } catch (err) 
     {
         res.status(500).send({
@@ -28,6 +28,13 @@ app.get("/api/getQuestions", async (_req: any, res: any ) => {
     }
 })
 
+app.get("/test", (_req: any, res: any) => {
+    const list = {
+        Name: "Emmanuel",
+        Age: 17,
+    }
+    res.send(list)
+})
 
 
 app.listen(3000, () => {

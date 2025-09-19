@@ -1,11 +1,6 @@
-export async function hashingAlgorithm(key: string): number {
-    let table: Array = new Array();
-    var sumofCharacters = 0;
+export function hashingAlgorithm(key: string): number {
+    var hashTable = {};
+    
 
-    key.split("").forEach(element: char => {
-        sumofCharacters += element.charCodeAt()
-    });
-    return sumofCharacters % 10
+
 }
-
-console.log*
