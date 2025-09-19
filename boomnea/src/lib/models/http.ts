@@ -10,7 +10,7 @@ app.get("/", (_req: any, res: { send: (arg0: string) => void; }) => {
 
 
 app.get("/api/getQuestions", async (_req: any, res: any ) => {
-     // tablesample system returns a random sample from the table 
+     // tablesample system returns a random sample from the table in postgres
     try {
         const result: any = await queries('SELECT "QuestionName", "PhaseNum", "CreatedBy", "Options" FROM "Questions" TABLESAMPLE SYSTEM (1) LIMIT 1')
         const list = {
@@ -26,9 +26,9 @@ app.get("/api/getQuestions", async (_req: any, res: any ) => {
             "error": `Internal server error! (database error: ${err})`
         })
     }
-
-
 })
+
+
 
 app.listen(3000, () => {
     console.log("Now listening on port 3000!")
