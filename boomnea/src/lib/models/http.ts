@@ -28,13 +28,6 @@ app.get("/api/getQuestions", async (_req: any, res: any ) => {
     }
 })
 
-app.get("/test", (_req: any, res: any) => {
-    const list = {
-        Name: "Emmanuel",
-        Age: 17,
-    }
-    res.send(list)
-})
 
 
 app.listen(3000, () => {
