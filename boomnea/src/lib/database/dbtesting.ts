@@ -1,18 +1,15 @@
 import { Pool } from "pg";
 import dotenv from "dotenv";
-import path from "node:path";
 import process from "node:process";
-import { idGenerator } from "./utility/idGenerator.ts";
 
 // dotenv configuration
 dotenv.config({
     override: true, // Overrides any environment variables that have already been set on the machine with values from the .env file.
-    path: path.join(__dirname, "db.env"), // Specifies a custom path if the file containing environment variables is located elsewhere. Can also be an array of strings, specifying multiple paths.
     quiet: true // i keep getting these tips when running my code, so i enabled this to remove them
 });
 
 // postgres configuration
-export const pool: Pool = new Pool({
+export const pool = new Pool({
     host: process.env.HOST, 
     port: parseInt(process.env.PORT || ""), // by default, env vars are strings, and since the port is an integer, it needs to be converted to such
     database: process.env.DATABASE, // database we are using
@@ -34,8 +31,32 @@ to do any sort of database operation
 const client = await pool.connect();
 try {
     // the try block is we are trying to execute
-        await client.query('INSERT INTO "User" VALUES ($1, $2, $3, $4)', [idGenerator, "emmanuelc", "password", new Date().getDate()]);
-} catch (error) { 
+    const result = await client.query('SELECT "Question", "Answers" FROM "UGQuestion" ORDER BY RANDOM() LIMIT 1');
+    const question = result["rows"][0]["Question"];
+    const answers = result["rows"][0]["Answers"]
+
+
+    console.log(question)
+    let correctAnswer;
+    var i = 1;
+    for (const key in answers) {
+        console.log(`${i}. ${key}`)
+        if (answers[key] == true) {
+            correctAnswer = key;
+        }
+        i++;
+    }
+    const qnInput = prompt("");
+
+
+    if (answers[qnInput?.toLowerCase()]) {
+        console.log("Yes! That is the correct answer!");
+    }
+    else {
+        console.log(`No...The answer was ${correctAnswer}.`);
+    }
+} 
+catch (error) { 
     // error handling: we are 'catching' exceptions generated within the try statement
     console.log(`An error occurred! ${error}`) 
 } finally {
