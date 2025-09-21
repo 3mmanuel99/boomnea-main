@@ -1,3 +1,4 @@
+// deno-lint-ignore-file no-explicit-any
 import express from "express";
 import { queries } from "../database/database.ts";
 
@@ -21,11 +22,6 @@ app.get("/api/getQuestions", async (_req: any, res: any) => {
             createdAt: result["rows"][0]["QnCreatedAt"],
             options: result["rows"][0]["Answers"]
         };
-        if (!result["rows"]) {
-            res.status(404).send({
-                "error": "Not Found"
-            })
-        }
         await res.send(list)
     } catch (err) 
     {
