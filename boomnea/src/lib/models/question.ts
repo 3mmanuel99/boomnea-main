@@ -24,10 +24,7 @@ export async function createQuestion({userID, question, options}: Question, phas
     return "Question created successfully.";
 }
 
+
 export async function getQuestion(): Promise<any> {
-    const result: any = await queries('SELECT QuestionName, Options FROM "UGQuestion" ORDER BY RANDOM() LIMIT 1');
-    return {
-        "question": result.rows[0].QuestionName,
-        "options": result.rows[0].Options
-    }
+    
 }
