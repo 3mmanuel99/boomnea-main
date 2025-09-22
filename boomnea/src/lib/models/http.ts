@@ -1,6 +1,6 @@
 // deno-lint-ignore-file no-explicit-any
 import express from "express";
-import { queries } from "../database/database.ts";
+import { getQuestion } from "./question.ts";
 
 const app = express()
 
@@ -10,19 +10,11 @@ app.get("/", (_req: any, res: { send: (arg0: string) => void; }) => {
 });
 
 
-app.get("/api/getQuestions", async (_req: any, res: any) => {
+app.get("/api/getQuestions/:id", async (req: any, res: any) => {
      // tablesample system returns a random sample from the table in postgres
     try {
-        const result: any = await queries('SELECT * FROM "UGQuestion" LIMIT 1')
-        const list = {
-            question: result["rows"][0]["Question"],
-            questionId: result["rows"][0]["UGQuestionID"],
-            phaseNumber: result["rows"][0]["PhaseNum"],
-            createdBy: result["rows"][0]["UserID"],
-            createdAt: result["rows"][0]["QnCreatedAt"],
-            options: result["rows"][0]["Answers"]
-        };
-        await res.send(list)
+        const params = req.params;
+        await res.send(getQuestion(params))
     } catch (err) 
     {
         console.error(err);
