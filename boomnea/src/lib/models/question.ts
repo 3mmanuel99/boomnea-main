@@ -1,20 +1,7 @@
 import { queries } from "../database/database.ts";
 import { questionIdGenerator } from "../utility/idGeneration.ts";
 
-const phaseNum = 1 | 2 | 3 | 4;
-
-interface Options
-{
-    optionName: string,
-    isCorrect: boolean
-}
-
-interface Question {
-    userID: string,
-    question: string
-    options: string[]
-}
-
+/*
 export async function createQuestion({userID, question, options}: Question, phaseNumber: number, ): Promise<string> {
     if (phaseNumber != phaseNum)
     {
@@ -23,7 +10,7 @@ export async function createQuestion({userID, question, options}: Question, phas
     await queries('INSERT INTO "UGQuestion" VALUES($1, $2, $3, $4, $5)', [questionIdGenerator(), userID, phaseNum, options, new Date()]);
     return "Question created successfully.";
 }
-
+*/
 
 export async function getQuestion(id: string): Promise<any> {
     const result = await queries(`SELECT "UGQuestionID", "UserID", "PhaseNum", "QnCreatedAt", "Question", "Answers" FROM "UGQuestion" WHERE "UGQuestionID" = $1`, [id]);
@@ -38,6 +25,6 @@ export async function getQuestion(id: string): Promise<any> {
         };
         return list;
     } else {
-        null;
+        null; // ** this makes the api return an error 404 should return.rows.length equal 0.
     }
 }

@@ -10,7 +10,7 @@ app.get("/", (_req: any, res: { send: (arg0: string) => void; }) => {
 });
 
 
-app.get("/api/getQuestions/:id", async (req: any, res: any) => {
+app.get("/api/getQuestion/:id", async (req: any, res: any) => {
      // tablesample system returns a random sample from the table in postgres
     try {
         const params = req.params["id"];
