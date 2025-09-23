@@ -13,9 +13,16 @@ app.get("/", (_req: any, res: { send: (arg0: string) => void; }) => {
 app.get("/api/getQuestions/:id", async (req: any, res: any) => {
      // tablesample system returns a random sample from the table in postgres
     try {
-        const params = req.params;
-        await res.send(getQuestion(params))
-    } catch (err) 
+        const params = req.params["id"];
+        const questionQuery = await getQuestion(params);
+        if (!questionQuery)
+        {
+            res.status(404).send({
+                "error": "Question not found."
+            })
+        }
+        res.send(questionQuery);
+    } catch (err: any) 
     {
         console.error(err);
         res.status(500).send({
