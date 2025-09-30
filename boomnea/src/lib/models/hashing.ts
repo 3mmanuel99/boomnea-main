@@ -1,10 +1,11 @@
 export class Hash {
+    bucket: number;
     table: Array<number>;
-    size: number;
-
-    constructor(size = 10) {
-        this.size = size;
-        this.table = Array(size);
+    constructor(numBuckets: number) {
+        //** hash buckets in hash tables are used
+        //** 
+        this.bucket = numBuckets;
+        this.table = Array(V);
     }
     hashingAlgorithm(key: string) {
         var hashValue: number = 0;
@@ -17,9 +18,12 @@ export class Hash {
         */
         return Math.abs(hashValue) % this.table.length;
     }
-    /* TODO: figure out how to do this part...
-    insert(key: string, value: number) {
-
+    insert(key: string) {
+        const idx: number = this.hashingAlgorithm(key);
+        this.table[idx].push(key);
+        
+        table.forEach(element => {
+            
+    })
     }
-    */
 }
