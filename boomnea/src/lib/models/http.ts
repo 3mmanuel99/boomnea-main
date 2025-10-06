@@ -2,32 +2,30 @@
 import express from "express";
 import { getQuestion } from "./question.ts";
 
-const app = express()
+const app = express();
 
 
 app.get("/", (_req: any, res: { send: (arg0: string) => void; }) => {
-    res.send("Hello world! (I hope I can complete my coursework on time...)")
+    res.send("Hello world! (I hope I can complete my coursework on time...)");
 });
 
-
-app.get("/api/getQuestion/:id", async (req: any, res: any) => {
-     // tablesample system returns a random sample from the table in postgres
+// GET api/question/:id
+app.get("/api/question/:id", async (req: any, res: any) => {
     try {
-        const params = req.params["id"];
-        const questionQuery = await getQuestion(params);
+        const idParams = req.params["id"];
+        const questionQuery = await getQuestion(idParams);
         if (!questionQuery)
         {
             res.status(404).send({
                 "error": "Question not found."
-            })
+            });
         }
         res.send(questionQuery);
     } catch (err: any) 
     {
-        console.error(err);
         res.status(500).send({
             "error": `Internal server error! (database error: ${err})`
-        })
+        });
     }
 })
 
