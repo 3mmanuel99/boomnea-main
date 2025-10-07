@@ -1,6 +1,6 @@
 // deno-lint-ignore-file no-explicit-any
 import express from "express";
-import { getQuestion } from "./question.ts";
+import { createQUestion, getQuestion } from "./question.ts";
 
 const app = express();
 
@@ -9,18 +9,18 @@ app.get("/", (_req: any, res: { send: (arg0: string) => void; }) => {
     res.send("Hello world! (I hope I can complete my coursework on time...)");
 });
 
-// GET api/question/:id
-app.get("/api/question/:id", async (req: any, res: any) => {
+// GET api/question/:questionID
+app.get("/api/question/:questionID", async (req: any, res: any) => {
     try {
-        const idParams = req.params["id"];
-        const questionQuery = await getQuestion(idParams);
-        if (!questionQuery)
+        const questionIDParam = req.params["questionID"];
+        const getQuestionQuery = await getQuestion(questionIDParam);
+        if (!getQuestionQuery)
         {
             res.status(404).send({
                 "error": "Question not found."
             });
         }
-        res.send(questionQuery);
+        res.send(getQuestionQuery);
     } catch (err: any) 
     {
         res.status(500).send({
@@ -28,7 +28,16 @@ app.get("/api/question/:id", async (req: any, res: any) => {
         });
     }
 })
-
+// todo: POST api/question/...
+app.post("api/question/:userID", async (req: any, res: any) => {
+    try {
+        const userIDParam = req.params["userID"];
+        const createQuestionQUery = await createQUestion(userIDParam);
+        // ...
+    } catch {
+        // ...
+    }
+})
 
 
 app.listen(3000, () => {

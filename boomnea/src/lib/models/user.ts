@@ -17,9 +17,9 @@ export async function createUser(username: string, password: string): Promise<st
 // fetches only one user in specific
 export async function getUser(username: string): Promise<object | undefined>
 {
-    // avoiding issues like SQL injection by not hardcoding values into SQL statements
-    // deno-lint-ignore no-explicit-any
+    // ** avoiding issues like SQL injection by not hardcoding values into SQL statements is important
     // todo: change 'SELECT *' to the columns you ACTUALLY need info from
+    // deno-lint-ignore no-explicit-any
     const result: any = await queries('SELECT * FROM "User" WHERE Username = $1', [username]);
     const list = {
         "userid": result.rows[0].UserID,

@@ -1,19 +1,18 @@
 import { queries } from "../database/database.ts";
 import { questionIdGenerator } from "../utility/idGeneration.ts";
 
-/*
-export async function createQuestion({userID, question, options}: Question, phaseNumber: number, ): Promise<string> {
-    if (phaseNumber != phaseNum)
-    {
-        throw new Error("Invalid phase number!");
-    }
-    await queries('INSERT INTO "UGQuestion" VALUES($1, $2, $3, $4, $5)', [questionIdGenerator(), userID, phaseNum, options, new Date()]);
-    return "Question created successfully.";
-}
-*/
 
-// GET api/question/:id
-export async function getQuestion(id: string): Promise<object | undefined> {
+interface Question {
+    question: string
+    questionID: string,
+    createdByUserID: string,
+    phaseNum: number,
+    createdAt: number,
+    options: object
+}
+
+// GET api/question/:questionID
+export async function getQuestion(questionID: Question): Promise<object | undefined> {
     const result = await queries(`
         SELECT 
         "UGQuestionID", 
@@ -23,7 +22,7 @@ export async function getQuestion(id: string): Promise<object | undefined> {
         "Question", 
         "Answers" 
         FROM "UGQuestion" 
-        WHERE "UGQuestionID" = $1`, [id]);
+        WHERE "UGQuestionID" = $1`, [questionID]);
     if (result.rows.length > 0) {
         const list = {
             question: result["rows"][0]["Question"],
@@ -37,4 +36,27 @@ export async function getQuestion(id: string): Promise<object | undefined> {
     } else {
         null; // ** this makes the api return an error 404 should return.rows.length equal 0.
     }
+}
+
+// POST api/question/:userID 
+// todo: continue this...
+export async function createQUestion(attributes: Question) {
+    // ** attributes.createdByUserID 
+    // ** is passed twice as we 
+    // ** need to check whether the 
+    // ** user exists on the Users table.
+    const result = await queries(`
+        IF EXISTS (SELECT UserID FROM Users WHERE UserID = $1) BEGIN
+        INSERT INTO
+        "UGQuestion"
+        VALUES
+        ($2, $3, $4, $5, $6, $7)
+        END
+        `, [attributes.createdByUserID, 
+            attributes.createdByUserID, 
+            attributes.phaseNum, 
+            attributes.createdAt, 
+            attributes.question, 
+            attributes.options]
+        )
 }
